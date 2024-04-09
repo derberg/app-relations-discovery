@@ -1,28 +1,30 @@
 {
-  "name": "@asyncapi/app-relations-discovery",
-  "version": "0.4.0",
+  "name": "@asyncapi/cupid",
+  "version": "0.6.23",
   "description": "A library that focuses on finding and analyzing the relationships between AsyncAPI Documents too later output consolidated information about the system architecture. Output format should be customizable and available in different formats like uml, mermaid.js and other.",
   "main": "./lib/index.js",
   "scripts": {
     "test": "npm run test:lib",
     "lint": "eslint --max-warnings 0 --config .eslintrc .",
+    "docs": "jsdoc2md \"lib/appRelationsDiscovery.js\" -f \"lib/**/*.js\" > API.md",
     "get:version": "echo $npm_package_version",
     "get:name": "echo $npm_package_name",
-    "generate:assets": "echo \"Nothing to generate\"",
+    "generate:readme:toc": "markdown-toc -i README.md",
+    "generate:assets": "npm run docs && npm run generate:readme:toc",
     "bump:version": "npm --no-git-tag-version --allow-same-version version $VERSION",
     "test:lib": "nyc --reporter=lcov --reporter=html --reporter=text --no-clean mocha --recursive",
     "release": "semantic-release"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/asyncapi/app-relations-discovery.git"
+    "url": "git+https://github.com/asyncapi/cupid.git"
   },
   "author": "Arjun Garg <arjun.garg.cse01@gmail.com>",
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/asyncapi/app-relations-discovery/issues"
+    "url": "https://github.com/asyncapi/cupid/issues"
   },
-  "homepage": "https://github.com/asyncapi/app-relations-discovery#readme",
+  "homepage": "https://github.com/asyncapi/cupid#readme",
   "devDependencies": {
     "@semantic-release/commit-analyzer": "^8.0.1",
     "@semantic-release/github": "^7.2.3",
@@ -35,12 +37,14 @@
     "eslint-plugin-mocha": "^9.0.0",
     "eslint-plugin-security": "^1.4.0",
     "eslint-plugin-sonarjs": "^0.8.0-125",
+    "jsdoc-to-markdown": "^7.0.1",
+    "markdown-toc": "^1.2.0",
     "mocha": "^9.0.1",
     "nyc": "^15.1.0",
     "semantic-release": "^17.4.3"
   },
   "dependencies": {
-    "@asyncapi/parser": "^1.6.0"
+    "@asyncapi/parser": "^1.18.0"
   },
   "publishConfig": {
     "access": "public"
